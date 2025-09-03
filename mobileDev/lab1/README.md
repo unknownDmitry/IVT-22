@@ -44,7 +44,7 @@
   ```bash
   git add .
   git commit -m "Initial commit"
-  git remote add origin https://github.com/Stanlycore/University.git
+  git remote add origin https://github.com/unknownDmitry/IVT-22.git
   git push -u origin master
   ```
 - Установлен Git Extensions для удобства работы с репозиторием
@@ -61,4 +61,4 @@
 
 ## Результаты
 Рабочий проект доступен в репозитории:  
-[GitHub репозиторий](https://github.com/DvornikovDV/Study/edit/main/MA/first_lab)
+[GitHub репозиторий](https://github.com/unknownDmitry/IVT-22/tree/master/mobileDev/lab1)
