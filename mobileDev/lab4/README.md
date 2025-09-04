@@ -1,16 +1,60 @@
 # lab4
 
-A new Flutter project.
+Калькулятор ускорения свободного падения с использованием Cubit (кубита) для управления состоянием.
 
-## Getting Started
+## Порядок выполнения работы
 
-This project is a starting point for a Flutter application.
+1. **Изучить теоретические основы.**
+   - Изучены основы паттерна Cubit/Bloc для управления состоянием.
+   - Изучены принципы инкапсуляции бизнес-логики в кубите.
 
-A few resources to get you started if this is your first Flutter project:
+2. **За основу данной лабораторной работы взять проект и задание из прошлой.**
+   - Взята за основу лабораторная работа lab3 с расчётом ускорения свободного падения.
+   - Сохранена формула: g = G · M / R², где G = 6.67430×10⁻¹¹ Н·м²/кг².
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+3. **Реализовать кубит и состояние кубита.**
+   - Создан класс `GravityCubit` в файле `lib/screens/gravity_cubit.dart`.
+   - Определены состояния: `GravityInitial`, `GravityInput`, `GravityResult`.
+   - Кубит управляет всеми изменениями состояния приложения.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+4. **Вынести все расчёты в кубит.**
+   - Метод `calculateGravity()` в `GravityCubit` выполняет расчёт ускорения.
+   - Валидация входных данных также инкапсулирована в кубите (`validateInput()`).
+   - UI-слой только отображает состояние, не содержит бизнес-логики.
+
+5. **Вместо переключения экранов приложения реализовать смену состояний.**
+   - Удалена навигация между экранами (`Navigator.push`).
+   - Используется `BlocBuilder<GravityCubit, GravityState>` для реактивного обновления UI.
+   - Переключение между формами ввода и результатами происходит через смену состояний.
+
+## Структура проекта
+
+```
+lib/
+├── main.dart                           # Точка входа приложения
+└── screens/
+    ├── main_screen_provider.dart       # Провайдер кубита (BlocProvider)
+    ├── main_screen.dart                # Главный экран с BlocBuilder
+    └── gravity_cubit.dart              # Кубит с бизнес-логикой и состояниями
+```
+
+## Основные компоненты
+
+### GravityCubit
+- Управляет состоянием приложения
+- Содержит константу гравитационной постоянной G
+- Выполняет валидацию входных данных
+- Вычисляет ускорение свободного падения
+
+### Состояния (States)
+- `GravityInitial` - начальное состояние
+- `GravityInput` - состояние ввода с валидацией
+- `GravityResult` - состояние с результатом расчёта
+
+### UI компоненты
+- `MainScreenProvider` - провайдер кубита
+- `MainScreen` - главный экран с реактивным UI
+
+## Автор
+
+Савин Дмитрий Николаевич
