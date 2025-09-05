@@ -100,7 +100,7 @@ class MainScreen extends StatelessWidget {
                     inputState?.consent == true)
                 ? () => context.read<GravityCubit>().calculateGravity(
                     inputState!.mass!,
-                    inputState!.radius!,
+                    inputState.radius!,
                   )
                 : null,
             child: const Text('Рассчитать ускорение'),
